@@ -1,0 +1,16 @@
+$primaryColor: #ffcc01;
+$secondaryColor: #00bff3;
+$accentColor: #f86822;
+
+// Z-INDEX'es
+$closeMenuToggleIndex: 120;
+$menuIndex: 110;
+$menuToggleIndex: 100;
+
+// MIXINS
+@mixin flexCentering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

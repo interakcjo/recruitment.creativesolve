@@ -1,0 +1,32 @@
+.site-footer {
+  background: $primaryColor;
+  margin-top: 20rem;
+  background: url(../img/stopka.png) repeat-x center;
+  padding: 8rem 0;
+  &::before {
+    display: block;
+    content: "";
+    width: 100%;
+    // height:
+  }
+  & > .container {
+    @include flexCentering;
+
+    @include small {
+      flex-direction: column;
+    }
+  }
+
+  &__divider {
+    display: inline-block;
+    width: 0.2rem;
+    height: 9rem;
+    background: black;
+    margin: 0 4rem;
+    @include small {
+      height: 0.1rem;
+      width: 100%;
+      margin: 3rem auto;
+    }
+  }
+}

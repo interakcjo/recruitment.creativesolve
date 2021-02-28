@@ -1,0 +1,50 @@
+.page-section {
+  @include extra-large {
+    display: block;
+    text-align: center;
+    margin: 4rem auto;
+    max-width: 95%;
+    width: 100%;
+  }
+
+  .wp-block-media-text__content {
+    h2 {
+      font-size: 4.8rem;
+      margin-bottom: 4rem;
+      position: relative;
+      &::after {
+        display: block;
+        content: "";
+        width: 26.7rem;
+        height: 3.7rem;
+        background: url(../img/podkreslenie.png) no-repeat center;
+        background-size: cover;
+        position: absolute;
+        bottom: -1rem;
+        left: 0;
+        z-index: -1;
+        @include extra-large {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+    p {
+      background: url(../img/tlo.png) repeat center;
+      background-size: contain;
+      padding: 5rem 12rem;
+      font-size: 2.4rem;
+      line-height: 1.6;
+      @include extra-large {
+        padding: 3rem;
+      }
+    }
+  }
+
+  .wp-block-media-text__media {
+    @include extra-large {
+      max-width: 50rem;
+      margin: 2rem auto;
+    }
+  }
+}
