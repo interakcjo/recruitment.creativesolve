@@ -1,5 +1,8 @@
 .site-header {
   margin-bottom: 20rem;
+  @include extra-large {
+    margin-bottom: 5rem;
+  }
   @include large {
     overflow: hidden;
   }
@@ -7,6 +10,14 @@
     @include flexCentering;
 
     margin: 1.5rem 0;
+
+    @include small {
+      max-width: 30rem;
+    }
+
+    @include custom-screen(425) {
+      max-width: 20rem;
+    }
   }
   &-nav {
     padding: 3rem 6rem;
@@ -26,6 +37,7 @@
       right: 4rem;
       @include large {
         right: -4rem;
+        background: none;
       }
       @include medium {
         right: -12rem;
@@ -43,8 +55,14 @@
         margin: 0 2.5rem;
         position: relative;
         z-index: 1;
-        @include medium {
-          margin: 2.5rem;
+        @include large {
+          width: auto;
+          height: auto;
+          text-indent: unset;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateX(-1.5rem);
+          margin: 1.5rem 2.5rem;
         }
         &::after {
           display: inline-block;
@@ -74,29 +92,48 @@
           background-size: cover;
           position: relative;
           z-index: 1;
+          color: black;
+          @include large {
+            background: none;
+            font-weight: bold;
+          }
         }
       }
     }
 
     &.toggled {
       .menu {
-        transform: translateY(0);
-        opacity: 1;
+        li {
+          animation: fadeIn 200ms ease both;
+        }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-1.5rem);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
   }
 }
 
 .menu-toggle {
   display: none;
 
-  @include small {
-    display: none !important;
+  @include large {
     display: inline-block;
     width: 5rem;
     height: 5rem;
-    position: fixed;
-    top: 12rem;
+    position: absolute;
+    top: -7rem;
     right: 3rem;
     transform: translateY(-50%);
     background: $secondaryColor;
@@ -111,6 +148,7 @@
       background: black;
       position: absolute;
       left: calc(50% - 3.5rem / 2);
+      transition: all 200ms ease-in-out;
       &:nth-child(2) {
         top: 1.3rem;
       }
@@ -121,5 +159,24 @@
         bottom: 1.3rem;
       }
     }
+
+    &[aria-expanded="true"] {
+      background: $primaryColor;
+      .menu-toggle__line:nth-child(2) {
+        top: calc(50% - 0.2rem / 2);
+        transform: rotate(-45deg);
+      }
+      .menu-toggle__line:nth-child(3) {
+        transform: rotate(45deg);
+      }
+      .menu-toggle__line:nth-child(4) {
+        transform: translateY(1.3rem);
+        opacity: 0;
+      }
+    }
+  }
+
+  @include custom-screen(425) {
+    top: -5rem;
   }
 }

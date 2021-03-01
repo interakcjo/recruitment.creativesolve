@@ -1,8 +1,11 @@
 .page-section {
+  gap: 10rem;
+  margin-bottom: 5rem;
   @include extra-large {
     display: block;
     text-align: center;
     margin: 4rem auto;
+    margin-bottom: 10rem;
     max-width: 95%;
     width: 100%;
   }
@@ -30,13 +33,29 @@
       }
     }
     p {
-      background: url(../img/tlo.png) repeat center;
-      background-size: contain;
-      padding: 5rem 12rem;
-      font-size: 2.4rem;
+      font-size: 1.8rem;
+      font-weight: 600;
       line-height: 1.6;
+      position: relative;
+      max-width: 40rem;
+      width: 100%;
       @include extra-large {
-        padding: 3rem;
+        margin: 0 auto;
+      }
+      &::before {
+        display: block;
+        content: "";
+        width: 51rem;
+        height: 22.1rem;
+        background: url(../img/tlo.png) no-repeat center;
+        background-size: contain;
+        position: absolute;
+        top: -3rem;
+        left: -3rem;
+        z-index: -1;
+        @include small {
+          left: -7rem;
+        }
       }
     }
   }
